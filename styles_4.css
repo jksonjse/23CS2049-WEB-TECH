@@ -1,4 +1,6 @@
 body{
+    transform: scale(0.9999); /* Scale down to 67% size */
+    transform-origin: top center; /* Keep scaling centered from top */
     background-image: url(bg-image.jpg);
     background-repeat: no-repeat;
     background-size: cover;
@@ -66,9 +68,9 @@ body{
     background-color: black;
 } */
 .login{
-    position: relative;
-    top: 50%;
-    left: 35%;
+    position: absolute;
+    top: 30%;
+    left: 27%;
     /* transform: translate(-50%, -50%); */
     background-color: rgb(0, 0, 0, 0.9);
     border-radius: 10px;
@@ -87,7 +89,7 @@ body{
     transform-origin: center center !important; 
 }
 .login:hover{
-    transform:scale(2);
+    transform:scale(1.2);
     
 }
 .login form{
