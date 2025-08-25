@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cake Shop</title>
+    <style>
+        .title{
+            color: white;
+            background-color: rgb(183, 36, 36);
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .image-gallery{
+            display: flex;
+            position: absolute;
+            left: 100px;
+            right: 100px;
+            justify-content: space-between;
+        }
+        .image-gallery img{
+            width: 200px;
+            height: 200px;
+        }
+        .caption, .price{
+            text-align: center;
+            margin-top: 2px;
+            margin-bottom: 2px;
+            font-family: Arial, Helvetica, sans-serif;
+            font-style: italic;
+        }
+        .image-gallery img:hover{
+            transform: scale(1.1)
+        }
+        .bill{
+            background-color: antiquewhite;
+            border-radius: 5px;
+            position: relative;
+            margin-top: 300px;
+            left: 400px;
+            text-align: justify;
+            height: 450px;
+            width: 500px;
+            text-align: center;
+            align-items: center;
+            padding-bottom: 100px;
+        }
+        .bill label{
+            padding-top: 5px;
+            margin-top: 50px;
+            font-size: 24px;
+            font-weight: 800;
+            text-align: justify;
+        }
+        .bill input{
+            margin-top: 20px;
+            width: 300px;
+            height: 30px;
+            font-size: 20px;
+            text-align: justify;
+        }
+        .place-order{
+            display: flex;
+            margin-top: 25px;
+            justify-content: center;
+        }
+        .place-order button{
+            padding: 15px 30px;
+            justify-content: center;
+            background-color: skyblue;
+            color: white;
+        }
+        #result{
+            color: rgb(44, 204, 44);
+            font-size: 32px;
+        }
+    </style>
+</head>
+<body>
+    <div class="title">
+        <h1>KARUNYA CAKE SHOP</h1>
+    </div>
+    <div class="image-gallery">
+        <div class="cake">
+            <img src="easy-chocolate-mousse-cake-featured.jpg" alt="chocy cake">
+            <div class="caption">Chocolate cake</div>
+            <div class="price">Rs.200</div>
+        </div>
+        <div class="cake">
+            <img src="unicorn-cake-tutorial-featured-copy.jpg" alt="rainbow cake">
+            <div class="caption">Rainbow cake</div>
+            <div class="price">Rs.300</div>
+        </div>
+        <div class="cake">
+            <img src="red-velvet.jpeg" alt="Red Velvet cake">
+            <div class="caption">Red Velvet</div>
+            <div class="price">Rs.250</div>
+        </div>
+        <div class="cake">
+            <img src="black-forest.jpeg" alt="black forest cake">
+            <div class="caption">Black Forest</div>
+            <div class="price">Rs.350</div>
+        </div>
+    </div>
+    <div class="bill">
+        <br>
+        <label for="choco-cake">Chocolate Cake(Quantity)</label><br>
+        <input type="text" name="choco-cake" id="cc" value="0"><br>
+        <label for="rainbow-cake">Rainbow Cake(Quantity)</label><br>
+        <input type="text" name="rainbow-cake" id="rc" value="0"><br>
+        <label for="rv-cake">Red Velvet Cake(Quantity)</label><br>
+        <input type="text" name="rv-cake" id="rv" value="0"><br>
+        <label for="bf-cake">Black Forest Cake(Quantity)</label><br>
+        <input type="text" name="bf-cake" id="bf" value="0"><br>
+        <div class="place-order">
+            <button type="submit" onclick="order()">Place Order</button>
+        </div>
+        <div id="result"></div>
+    </div>
+    <script>
+        function order(){
+            let cc = parseInt(document.getElementById("cc").value);
+            let rc = parseInt(document.getElementById("rc").value);
+            let rv = parseInt(document.getElementById("rv").value);
+            let bf = parseInt(document.getElementById("bf").value);
+            rc_price = rc*300;
+            cc_price = cc*200;
+            rv_price = rv*250;
+            bf_price = bf*350;
+            let result = cc_price + rc_price + rv_price + bf_price;
+            document.querySelector("#result").innerHTML = `<hr> Purchase Order Bill!!!
+            <br>Total Price: Rs ${result}`;
+        }
+    </script>
+</body>
+</html>

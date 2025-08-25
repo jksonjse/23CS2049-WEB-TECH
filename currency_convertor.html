@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>currency converor()</title>
+    <style>
+        html,body{
+            height: 100%;
+            background-color: brown;
+            color: rgb(185, 55, 55);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .box{
+            background-color: rgb(247, 219, 184);
+            border-radius: 5px;
+            width: 500px;
+            align-items: center;
+            text-align: justify;
+            padding-bottom: 100px;
+        }
+        h1{
+            text-align: center;
+        }
+        .box label{
+            font-size: 20pt;
+            font-weight: 800;
+            padding-left: 50px;
+            text-align: center;
+        }
+        .box input{
+            margin-top: 20px;
+            margin-left: 160px;
+            padding-right: 20px;
+        }
+        .box select{
+            margin-top: 20px;
+            margin-left: 160px;
+            width: 240px;
+            height: 60px;
+            border-radius: 5px;
+        }
+        #result_box{
+            margin: auto;
+            padding-top: 20px;
+            font-size: 20pt;
+            font-weight: 800;
+            padding-left: 30px;
+            /* text-align: center; */
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h1>Currency Convertor</h1><br>
+        <label for="value">Enter the Amount:</label><br>
+        <input type="text" required id="amount" oninput="convert()"><br>
+        <label for="from_value">From</label><br>
+        <select name="currency" id="currency_from" onchange="convert()"><br>
+            <option value="dollar" id = "usd">US Dollar</option>
+            <option value="rupee" id="rupee">IN Rupee</option>
+            <option value="euro" id="euro">Euro</option>
+            <option value="aud" id="aud">Australian Dollar</option>
+        </select><br>
+        <label for="from_value">To</label><br>
+        <select name="currency" id="currency_to" onchange="convert()"><br>
+            <option value="dollar" id = "usd">US Dollar</option>
+            <option value="rupee" id="rupee">IN Rupee</option>
+            <option value="euro" id="euro">Euro</option>
+            <option value="aud" id="aud">Australian Dollar</option>
+        </select>
+        <div id="result_box"></div>
+        <script>
+            function convert(){
+                let amt = parseFloat(document.getElementById("amount").value)
+                let from_value = document.getElementById("currency_from").value
+                let to_value = document.getElementById("currency_to").value
+                let result = ""
+                switch(from_value){
+                    case "dollar":
+                        switch(to_value){
+                            case "dollar": result = amt; break;
+                            case "rupee": result = amt * 87.68; break;
+                            case "euro": result = amt * 0.86; break;
+                            case "aud": result = amt * 1.53; break;
+                        }
+                    case "rupee":
+                        switch(to_value){
+                            case "dollar": result = amt * 0.011; break;
+                            case "rupee": result = amt; break;
+                            case "euro": result = amt * 0.0097; break;
+                            case "aud": result = amt * 0.017; break;
+                        }
+                    case "euro":
+                        switch(to_value){
+                            case "dollar": result = amt * 1.17; break;
+                            case "rupee": result = amt * 102.66; break;
+                            case "euro": result = amt; break;
+                            case "aud": result = amt * 1.79; break;
+                        }
+                    case "aud":
+                        switch(to_value){
+                            case "dollar": result = amt * 0.66; break;
+                            case "rupee": result = amt * 57.45; break;
+                            case "euro": result = amt * 0.56; break;
+                            case "aud": result = amt; break;
+                        }
+                }
+                document.querySelector("#result_box").innerHTML = "Converted Amount " + result;
+            }
+        </script>
+    </div>
+</body>
+</html>
