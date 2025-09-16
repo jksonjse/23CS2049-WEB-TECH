@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>summation</title>
+    <script src="jquery-3.7.1.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#addButton").click(function(){
+                let num_1 = parseFloat($("#num1").val())
+                let num_2 = parseFloat($("#num2").val())
+                if(isNaN(num_1) || isNaN(num_2)){
+                    alert('Enter valid number')
+                }
+                else{
+                    let sum = num_1 + num_2
+                    $('#result').html('Result: '+sum)
+                }
+            })
+        })
+    </script>
+</head>
+<body>
+    <label for="num1">Number 1: </label>
+    <input type="text" id="num1"><br><br>
+    <label for="num2">Number 2: </label>
+    <input type="text" id="num2"><br><br>
+    <button id="addButton">Add</button>
+    <div id="result"></div>
+</body>
+</html>

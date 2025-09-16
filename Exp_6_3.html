@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GST Calculator</title>
+    <script src="jquery-3.7.1.min.js"></script>
+    <style>
+        body{
+            /* display: grid; */
+            background-color: rgb(222, 222, 222);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #center_box{
+            background-color: rgb(255, 255, 255);
+            border-radius: 20px;
+            width: 50%;
+            margin-top: 100px;
+        }
+        h1{
+            text-align: center;
+            color: rgb(94, 94, 247);
+        }
+        #center_box label{
+            text-align: justify;
+            padding-left: 150px;
+        }
+        #center_box input{
+            width: 60%;
+            margin-left: 150px;
+        }
+        #gst{
+            width: 60%;
+            margin-left: 150px;
+        }
+        #output{
+            display: flex;
+            justify-content: space-between;
+            left: 20px; 
+            width: 60%;           
+            margin: auto;
+        }
+        .box{
+            background-color: rgb(184, 212, 255);
+            margin-top: 20px;
+            padding: 20px;
+            border-radius: 2px;
+            color: rgb(0, 0, 0);
+            margin: 5px;
+            margin-top: 10px;
+            text-align: center;
+        }
+        #Reset{
+            width: 60%;
+            justify-content: center;
+            align-items: center;
+            margin-left: 150px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            color: white;
+            background-color: rgb(94, 94, 247);
+        }
+    </style>
+    <script>
+        $(document).ready(function(){
+            $('#amt').keyup(function(){
+                let amt = parseFloat($('#amt').val())
+                let gst = amt * parseFloat($('#gst').val())
+                let total = amt + gst
+
+                $('#amt_result').html("Actual Amount<br><br><b>" + amt + "</b>")
+                $('#gst_result').html("GST<br><br>"+"<b>" + gst + "<b>")
+                $('#total').html("Total <br><br>"+"<b>" + total + "<b>")
+            })
+            $('#gst').change(function(){
+                let amt = parseFloat($('#amt').val())
+                let gst = amt * parseFloat($('#gst').val())
+                let total = amt + gst
+
+                $('#amt_result').html("Actual Amount<br><br>"+"<b>" + amt + "<b>")
+                $('#gst_result').html("GST<br><br>"+"<b>" + gst + "<b>")
+                $('#total').html("Total Amount<br><br>"+"<b>" + total + "<b>")
+            })
+            $('#Reset').click(function(){
+                    $('#amt').val('');
+                    $('#gst').val('0.03');
+                    $('#amt_result').html("Actual Amount<br><br>");
+                    $('#gst_result').html("GST Amount<br><br>");
+                    $('#total').html("Total Amount<br><br>");
+                });
+            })
+    </script>
+</head>
+<body>
+    <div id="center_box">
+        <h1>GST Calculator</h1>
+        <label for="amt">Amount:</label><br><br>
+        <input type="text" id="amt" name="amt"><br><br>
+        <label for="gst">GST (%):</label><br><br>
+        <select name="gst" id="gst">
+            <option value="0.03">3%</option>
+            <option value="0.05">5%</option>
+            <option value="0.12">12%</option>
+            <option value="0.18">18%</option>
+            <option value="0.28">28%</option>
+        </select>
+
+        <div id="output">
+            <div id="amt_result" class="box">
+                Actual Amount<br><br>
+            </div>
+            <div id="gst_result" class="box">
+                GST Amount<br><br>
+            </div>
+            <div id="total" class="box">
+                Total Amount<br><br>
+            </div>
+        </div>
+
+        <button id="Reset">Reset</button>
+    </div>
+</body>
+</html>
